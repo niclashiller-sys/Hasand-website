@@ -1,0 +1,69 @@
+name: Backup live repaired Hasand site
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/backup-live-site.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Switch to backup branch
+        run: |
+          git fetch origin production-backup-2026-09-04
+          git checkout production-backup-2026-09-04
+
+      - name: Replace branch contents with repaired production site
+        run: |
+          git rm -r --ignore-unmatch .
+          mkdir -p assets/images
+          curl -fSL https://www.hasand.no/index.html -o index.html
+          curl -fSL https://www.hasand.no/assets/index-BStOvdXP.js -o assets/index-BStOvdXP.js
+          curl -fSL https://www.hasand.no/assets/index-ChNYlUmb.css -o assets/index-ChNYlUmb.css
+          curl -fSL https://www.hasand.no/assets/images/about.webp -o assets/images/about.webp
+          curl -fSL https://www.hasand.no/assets/images/contact.webp -o assets/images/contact.webp
+          curl -fSL https://www.hasand.no/assets/images/hero.webp -o assets/images/hero.webp
+          curl -fSL https://www.hasand.no/assets/images/portrait.webp -o assets/images/portrait.webp
+          curl -fSL https://www.hasand.no/assets/images/services.webp -o assets/images/services.webp
+          printf '.vercel\n.DS_Store\n' > .gitignore
+          cat > README.md <<'EOF'
+          # Håsand Consultancy website production backup
+
+          This branch contains the repaired, self-contained production website backed up from https://www.hasand.no on 2026-09-04.
+
+          The five website images are stored locally under `assets/images/`; the site no longer depends on the former Manus/CloudFront image URLs.
+
+          Production hosting remains on Vercel project `hasand-new`. This branch is a backup and does not control the live deployment.
+          EOF
+
+      - name: Verify exact production files
+        run: |
+          cat > /tmp/checksums <<'EOF'
+          86b7bb13641572c9f1fa3cb2b3019c950008d0017fff797809e949f2a9abc7d8  index.html
+          1936794d6b483c3b6e3298ff1646b81daadd33c78d53b1fafe0b8048683febc2  assets/index-BStOvdXP.js
+          72167d0f19f6f4dbf274fe8422a81988802f41759a76f90921b5893b95421a1e  assets/index-ChNYlUmb.css
+          906f42142de3cd2e14057ea62380f0b498a1bffabe849c29808b73ef84adb98e  assets/images/about.webp
+          8afae5d3b5895684993b8ea817ba7c4d8c1607ef0dc16ae094b8fc1afb0de0f8  assets/images/contact.webp
+          9a8ff7c6e328cd306b23e40191424ff4769024f722e89e96f20b0f0cc5acf1d0  assets/images/hero.webp
+          fdcb3c156aa40d3f630ba28d9d6772989168d57988d98aa6e466431d52e20a63  assets/images/portrait.webp
+          2a8af56ab463e505acfbc8c0159c927d0758b5659838cb7388cc107f5cc3463f  assets/images/services.webp
+          EOF
+          sha256sum -c /tmp/checksums
+
+      - name: Commit complete backup
+        run: |
+          git config user.name 'ChatGPT Codex Connector'
+          git config user.email 'noreply@openai.com'
+          git add -A
+          git commit -m 'Backup repaired production website 2026-09-04'
+          git push origin production-backup-2026-09-04
