@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Håsand Consultancy</title>
+  <rect width="64" height="64" rx="10" fill="#102A38"/>
+  <path d="M17 14h8v36h-8zM39 14h8v36h-8z" fill="#F8F6F1"/>
+  <path d="M25 29h14v7H25z" fill="#D4B07A"/>
+</svg>
