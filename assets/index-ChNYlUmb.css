@@ -11,5 +11,5 @@ header>.container>div>button:first-child{flex-shrink:0}
 @media (min-width:768px) and (max-width:1199px){
   header>.container>div>nav{display:none!important}
   header button.md\:hidden{display:block!important}
-  header div.fixed.md\:hidden{display:block!important}
+  div[data-loc="client/src/components/Navbar.tsx:190"]{display:block!important}
 }
