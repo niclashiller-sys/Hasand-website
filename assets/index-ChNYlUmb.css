@@ -5,3 +5,11 @@ header>.container>div>button:first-child{position:relative;padding-left:2.75rem}
 header>.container>div>button:first-child:before{content:"";position:absolute;left:0;top:50%;width:2rem;height:2rem;transform:translateY(-50%);border-radius:.35rem;background:url("/favicon.svg") center/contain no-repeat}
 footer .container>div:first-child>div:first-child{position:relative;padding-left:3rem}
 footer .container>div:first-child>div:first-child:before{content:"";position:absolute;left:0;top:0;width:2.25rem;height:2.25rem;border-radius:.4rem;background:url("/favicon.svg") center/contain no-repeat}
+
+/* Keep the compact navigation until the full menu and brand fit comfortably. */
+header>.container>div>button:first-child{flex-shrink:0}
+@media (min-width:768px) and (max-width:1199px){
+  header>.container>div>nav{display:none!important}
+  header button.md\:hidden{display:block!important}
+  div[data-loc="client/src/components/Navbar.tsx:190"]{display:block!important}
+}
