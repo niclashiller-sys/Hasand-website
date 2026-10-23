@@ -17,3 +17,15 @@ Swedish copy lives in `sv.json`, served at `/sv`. The generator now builds Engli
 The Swedish text received a separate editorial pass for Swedish idiom and investment terminology (including diskretionär förvaltning, tillgångsallokering and investeringskommitté). Capital amounts are explicitly in Norwegian kronor; the firm continues to be described as based in Norway. Official institution names and the established term family office are retained. The PDF language is labelled English. This is an assistant editorial review, not external human certification.
 
 Swedish remains preview-only until Niclas approves release.
+
+## Additional finance-language editorial review
+
+A further full pass checked terminology, register, sentence flow and translation artefacts in both Bokmål and Swedish. Established usage was cross-checked against Nordea Sweden (tillgångsallokering), Handelsbanken Sweden (diskretionär förvaltning, förmögenhetsförvaltning), Formue Norway (strategisk aktivaallokering, diskresjonær förvaltning / Norwegian spelling in source), and Riksgälden (återförsäljare, marknadsgarant).
+
+Changes include client return objectives and risk tolerance instead of vague desired risk/return, clearer strategy-governance descriptions, smoother independent-review and risk-management prose, and more natural PDF-link labels. Swedish uses mdr NOK and återförsäljare av statspapper. The approved Swedish headline and Swedish-only responsive layout remain intact. The Norwegian live version is not changed until release approval.
+
+References:
+- https://www.nordea.se/private-banking/vart-erbjudande/detta-ar-private-banking-i-nordea/for-stiftelser-och-institutioner.html
+- https://www.handelsbanken.se/sv/privat/spara/private-banking
+- https://formue.no/wp-content/uploads/2019/06/FF-%C3%A5rsmelding-2017.pdf
+- https://www.riksgalden.se/var-verksamhet/statens-upplaning/emissioner/aterforsaljare/
