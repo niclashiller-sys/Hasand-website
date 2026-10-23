@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /scripts/
+Disallow: /locales/
 
 Sitemap: https://www.hasand.no/sitemap.xml
