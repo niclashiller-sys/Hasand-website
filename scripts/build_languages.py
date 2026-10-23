@@ -48,6 +48,7 @@ for language,cfg in CONFIG.items():
  page=re.sub(r'<button([^>]*)>(EN|NO|SV)</button>',static_link,page)
  alternates='\n'.join('<link rel="alternate" hreflang="'+l+'" href="'+BASE+c['path']+'" />'for l,c in CONFIG.items())+'\n<link rel="alternate" hreflang="x-default" href="'+BASE+'/" />'
  page=page.replace('</head>',alternates+'\n</head>')
+ if language=='sv':page=page.replace('</head>','<link rel="stylesheet" href="/assets/swedish-layout-v1.css" />\n</head>')
  if language!='en':
   start=page.index('<div id="root">');end=page.index('</body>');fragment=page[start:end]
   fragment=re.sub(r'>([^<>]+)<',lambda m:'>'+html.escape(translated(html.unescape(m[1])),quote=False)+'<',fragment)

@@ -1,0 +1,20 @@
+/* Keep the longer Swedish headline clear of the navigation and supporting copy. */
+html[lang="sv"] #hero {
+  height: auto !important;
+  min-height: max(700px, 100svh) !important;
+  padding-top: clamp(8rem, 15vh, 10rem);
+  padding-bottom: 8rem;
+}
+html[lang="sv"] #hero > .container > div { max-width: 960px !important; }
+html[lang="sv"] #hero h1 {
+  font-size: clamp(2rem, 4.7vw, 4rem) !important;
+  line-height: 1.15 !important;
+  overflow-wrap: normal;
+  margin-bottom: 1.5rem !important;
+}
+html[lang="sv"] #hero h1 > br { display: none; }
+html[lang="sv"] #hero h1 > em { display: block; }
+@media (max-width: 640px) {
+  html[lang="sv"] #hero { padding-top: 8rem; padding-bottom: 9rem; }
+  html[lang="sv"] #hero h1 { font-size: clamp(2rem, 8vw, 2.8rem) !important; }
+}
